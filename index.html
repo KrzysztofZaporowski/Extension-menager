@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Frontend Mentor | Browser extensions manager UI</title>
+
+  
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="./assets/images/logo.svg" alt="header image">
+      </div>
+      <button id="theme-btn">
+        <img src="" alt="theme-img" id="theme-img">
+      </button>
+    </header>
+    <main>
+      <div class="grid-preview">
+        <h1>
+          Extensions list
+        </h1>
+        <div class="filter-btns">
+          <button id="all" class="filter-btn">
+            All
+          </button>
+          <button id="active" class="filter-btn">
+            Active
+          </button>
+          <button id="inactive" class="filter-btn">
+            Inactive
+          </button>
+        </div>
+      </div>
+      <div class="grid">
+        <!-- Object will be added here dynamically from json file -->
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

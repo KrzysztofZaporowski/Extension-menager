@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('./assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans Italic';
+    src: url('./assets/fonts/NotoSans-Italic-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-style: italic;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --font-color: hsl(227, 75%, 14%);
+    --paragraph-color: hsl(226, 11%, 37%);
+    --neutral-color: hsl(200, 60%, 99%);
+    --red-hover: hsl(3, 77%, 44%);
+}
+
+[data-theme="dark"] {
+    --background: linear-gradient(180deg, #040918 0%, #091540 100%);
+    --font-color: hsl(200, 60%, 99%);
+    --neutral-color: hsl(225, 23%, 24%);
+}
+
+body {
+    align-items: center;
+    background-image: var(--background);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: var(--font-color);
+    display: flex;
+    font-family: 'Noto Sans', sans-serif;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    height: 80vh;
+    min-width: 820px;
+    width: 80%;
+}
+
+header {
+    align-items: center;
+    background-color: var(--neutral-color);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0 50px;
+    padding: 10px;
+    width: 100%;
+}
+
+header button {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+header button:hover {
+    border: var(--red-hover) 2px solid;
+}
+
+.grid-preview {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.filter-btn {
+    border: none;
+    background-color: var(--neutral-color);
+    box-shadow: 0px 0px 1px 0px rgba(66, 68, 90, 1);
+    border-radius: 25px;
+    color: var(--font-color);
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 10px 15px;
+}
+
+.filter-btn:hover {
+    background-color: var(--red-hover);
+    color: var(--neutral-color);
+}
+
+.filter-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+
+
