@@ -2,6 +2,7 @@
 const themeIcon = document.getElementById("theme-img");
 const themeButton = document.getElementById("theme-btn");
 const extensionsContainer = document.querySelector('.grid');
+const filterButtons = document.querySelectorAll('.filter-btn');
 const allFilter = document.getElementById('all');
 const activeFilter = document.getElementById('active');
 const inactiveFilter = document.getElementById('inactive');
@@ -59,14 +60,19 @@ function displayExtensions(extensions) {
             extensionElement.classList.add('inactive');
         }
         extensionElement.innerHTML = `
-            <img src="${extension.logo}" alt="${extension.name}" class="extension-image">
             <div class="extension-info">
-                <h3 class="extension-name">${extension.name}</h3>
-                <p class="extension-description">${extension.description}</p>
-                <div class="options">
-                    <button class="remove-btn">Remove</button>
-                    <input type="checkbox" class="extension-checkbox" ${extension.isActive ? 'checked' : ''}>
-                    <label class="extension-label">Enable</label>
+                <img src="${extension.logo}" alt="${extension.name}" class="extension-image">
+                <div class="extension-data">
+                    <h3 class="extension-name">${extension.name}</h3>
+                    <p class="extension-description">${extension.description}</p>
+                </div>
+            </div>
+            <div class="options">
+                <button class="remove-btn">Remove</button>
+                <div class="switch">
+                    <input type="checkbox" class="extension-checkbox" id="checkbox-${extension.name}" ${extension.isActive ? 'checked' : ''}>
+                    <label for="checkbox-${extension.name}" class="extension-label"></label>
+                </div>
             </div>
         `;
 
@@ -74,8 +80,15 @@ function displayExtensions(extensions) {
     });
 }
 
-function filterExtensions(filter) {
+function filterExtensions(filter, event) {
     const allExtensions = document.querySelectorAll('.extension');
+
+    // Reset filter button styles
+    filterButtons.forEach(button => { 
+        button.classList.remove('selected');
+    });
+    event.target.classList.add('selected');
+
     allExtensions.forEach(extension => {
         if (filter === 'all') {
             extension.style.display = 'block';
@@ -113,9 +126,9 @@ function toggleExtensionStatus(event) {
     themeButton.addEventListener('click', toggleTheme);
     const extensions = await fetchData();
     displayExtensions(extensions);
-    allFilter.addEventListener('click', () => filterExtensions('all'));
-    activeFilter.addEventListener('click', () => filterExtensions('active'));
-    inactiveFilter.addEventListener('click', () => filterExtensions('inactive'));
+    allFilter.addEventListener('click', () => filterExtensions('all', event));
+    activeFilter.addEventListener('click', () => filterExtensions('active', event));
+    inactiveFilter.addEventListener('click', () => filterExtensions('inactive', event));
     extensionsContainer.addEventListener('click', removeExtension);
     extensionsContainer.addEventListener('change', toggleExtensionStatus);
 })();
