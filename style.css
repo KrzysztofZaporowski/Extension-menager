@@ -66,6 +66,10 @@ header {
     width: 100%;
 }
 
+[data-theme="dark"] header img {
+    filter: invert(1);
+}
+
 header button {
     border: transparent 2px solid;
     border-radius: 8px;
